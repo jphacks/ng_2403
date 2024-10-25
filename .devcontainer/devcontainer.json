@@ -3,7 +3,10 @@
 	"image": "node:18",
 	"workspaceFolder": "/workspace/app",
 	"forwardPorts": [3000],
-	"postCreateCommand": "npm install" ,
+	"containerEnv": {
+		"WATCHPACK_POLLING": "true"
+	},
+	"postCreateCommand":"npm install" ,
 	"features": {
     "ghcr.io/devcontainers/features/github-cli:1": {}
 	},
@@ -25,9 +28,9 @@
 	  }
 	},
 	"mounts": [
-	  "source=${localWorkspaceFolder}/app,target=/workspace/app,type=bind"
+	  "source=${localWorkspaceFolder}/app,target=/workspace/app,type=bind",
+	  "source=node_modules,target=/workspace/app/node_modules,type=volume"
 	],
-	"remoteUser": "node",
 	"shutdownAction": "stopContainer"  // コンテナを停止する設定
   }
   
