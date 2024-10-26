@@ -1,5 +1,5 @@
 interface Userinfo {
-    id: string;
+  id: string;
 }
 
 export default Userinfo;
