@@ -10,10 +10,10 @@ export default function Home() {
   const [userInfo, setUserInfo] = useState<UserInfo | null>(null);
 
   useEffect(() => {
-    setUserInfo({ id: "user123", UserInfoSet: setUserInfo });
+    setUserInfo({ id: null, UserInfoSet: setUserInfo });
   }, []);
 
-  if (!userInfo || !userInfo.id) {
+  if (!userInfo) {
     return <Loader />;
   }
 
