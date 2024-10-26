@@ -6,7 +6,10 @@ import { Input } from "../ui/input";
 export function InputScheduleComponent() {
   // 各入力フィールドの状態を管理するためのステート
   const [title, setTitle] = useState<string>("");
-  const [location, setLocation] = useState<string>("");
+  const [home, setHome] = useState<string>("");
+  const [internLocation, setInternLocation] = useState<string>("");
+  const [isAddHotel, setIsAddHotel] = useState<boolean>(false);
+  const [hotel, setHotel] = useState<string>("");
 
   // 複数の時間セットを管理するステート
   const [timeSets, setTimeSets] = useState<
@@ -75,25 +78,34 @@ export function InputScheduleComponent() {
 
       <Input
         type="text"
-        value={location}
-        onChange={(e) => setLocation(e.target.value)}
+        value={home}
+        onChange={(e) => setHome(e.target.value)}
         placeholder="現在地を入力"
         className="w-full px-4 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500"
       />
       <Input
         type="text"
-        value={location}
-        onChange={(e) => setLocation(e.target.value)}
+        value={internLocation}
+        onChange={(e) => setInternLocation(e.target.value)}
         placeholder="目的地を入力"
         className="w-full px-4 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500"
       />
-      <Input
-        type="text"
-        value={location}
-        onChange={(e) => setLocation(e.target.value)}
-        placeholder="宿泊先を入力"
-        className="w-full px-4 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500"
-      />
+      {isAddHotel ? (
+        <Input
+          type="text"
+          value={hotel}
+          onChange={(e) => setHotel(e.target.value)}
+          placeholder="宿泊先を入力"
+          className="w-full px-4 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500"
+        />
+      ) : (
+        <button
+          onClick={() => setIsAddHotel(true)}
+          className="mt-2 px-3 py-1 text-white bg-green-500 rounded-lg hover:bg-green-600"
+        >
+          宿泊先を入力する
+        </button>
+      )}
 
       <div className="w-full">
         <label className="block text-gray-700">時間セット:</label>
