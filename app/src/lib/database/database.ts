@@ -1,6 +1,7 @@
 // Import the functions you need from the SDKs you need
 import { initializeApp } from "firebase/app";
 import { getDatabase } from "firebase/database";
+import { env } from "@/env.mjs";
 // TODO: Add SDKs for Firebase products that you want to use
 // https://firebase.google.com/docs/web/setup#available-libraries
 
@@ -8,15 +9,14 @@ import { getDatabase } from "firebase/database";
 // For Firebase JS SDK v7.20.0 and later, measurementId is optional
 
 const firebaseConfig = {
-  apiKey: "AIzaSyAg9bXwl_ZFJu2FuOSYzEnFJ6iSn7fA2EY",
-  authDomain: "jphacks-4a068.firebaseapp.com",
-  databaseURL:
-    "https://jphacks-4a068-default-rtdb.asia-southeast1.firebasedatabase.app",
-  projectId: "jphacks-4a068",
-  storageBucket: "jphacks-4a068.appspot.com",
-  messagingSenderId: "738330529868",
-  appId: "1:738330529868:web:cb0bacabbd5e062769e4e9",
-  measurementId: "G-BPDFN4B5DH",
+  apiKey: env.DATABASE_API_KEY,
+  authDomain: env.DATABASE_AUTH_DOMAIN,
+  databaseURL: env.DATABASE_URL,
+  projectId: env.DATABASE_PROJECT_ID,
+  storageBucket: env.DATABASE_STORAGE_BUCKET,
+  messagingSenderId: env.DATABASE_MESSEGING_SENDER_ID,
+  appId: env.DATABASE_APP_ID,
+  measurementId: env.DATABASE_MEASUREMENT_ID,
 };
 
 const app = initializeApp(firebaseConfig);

@@ -1,3 +1,3 @@
 interface Userinfo {
-    id: string;
+  id: string;
 }
