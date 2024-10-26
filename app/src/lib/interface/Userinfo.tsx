@@ -1,5 +1,8 @@
-interface Userinfo {
-  id: string;
+import React from "react";
+
+interface UserInfo {
+  id: string | null;
+  UserInfoSet: React.Dispatch<React.SetStateAction<UserInfo | null>>;
 }
 
-export default Userinfo;
+export default UserInfo;
