@@ -1,12 +1,14 @@
+"use client";
 import UserInfo from "@/lib/interface/UserInfo";
 
-import React from "react";
+import React, { useEffect } from "react";
 import { GoogleAuthProvider, signInWithPopup } from "firebase/auth";
 import { useAuthState } from "react-firebase-hooks/auth";
 import { initializeApp } from "firebase/app";
 import { env } from "@/env.mjs";
 import { getAuth } from "firebase/auth";
 import Loader from "@/components/parts/loader";
+import { useRouter } from "next/navigation";
 
 const firebaseConfig = {
   apiKey: env.NEXT_PUBLIC_DATABASE_API_KEY,
@@ -24,6 +26,7 @@ const auth = getAuth(app);
 
 const LoginButton: React.FC<UserInfo> = (UserInfo) => {
   const [user, loading, error] = useAuthState(auth);
+  const router = useRouter();
 
   const signInWithGoogle = async () => {
     const provider = new GoogleAuthProvider();
@@ -38,8 +41,15 @@ const LoginButton: React.FC<UserInfo> = (UserInfo) => {
       console.error("Google Sign-in Error:", err);
     }
   };
+  // userが存在する場合にページ遷移
+  useEffect(() => {
+    if (user) {
+      // ログイン成功後にダッシュボードに遷移
+      router.push("/home/schedule");
+    }
+  }, [user]);
 
-  if (loading) return <></>;
+  if (loading) return <Loader />;
   if (error) return <p>Error: {error.message}</p>;
 
   return (
