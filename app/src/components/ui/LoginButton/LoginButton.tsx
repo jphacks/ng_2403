@@ -2,7 +2,6 @@
 import UserInfo from "@/lib/interface/UserInfo";
 
 import React, { useEffect } from "react";
-
 import { GoogleAuthProvider, signInWithPopup } from "firebase/auth";
 import { useAuthState } from "react-firebase-hooks/auth";
 import { initializeApp } from "firebase/app";
