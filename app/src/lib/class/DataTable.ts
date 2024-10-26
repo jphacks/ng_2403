@@ -1,4 +1,4 @@
-import Internship from "./Internship";
+import Internship from "@/lib/class/Internship";
 
 export default class DataTable {
   // メンバ変数名の定義
@@ -16,5 +16,16 @@ export default class DataTable {
   // ゲッター
   public getUserId(): string {
     return this.user_id;
+  }
+  public getInternships(): Internship[] {
+    return this.internships;
+  }
+
+  // セッター
+  public setUserId(user_id: string): void {
+    this.user_id = user_id;
+  }
+  public setInternships(internships: Internship[]): void {
+    this.internships = internships;
   }
 }
