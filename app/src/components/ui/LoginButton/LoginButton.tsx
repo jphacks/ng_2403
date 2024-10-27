@@ -45,7 +45,7 @@ const LoginButton: React.FC<UserInfo> = (UserInfo) => {
   useEffect(() => {
     if (user) {
       // ログイン成功後にダッシュボードに遷移
-      router.push("/home/schedule");
+      router.push(`/home/schedule?uid=${user.uid}`);
     }
   }, [user]);
 

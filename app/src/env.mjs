@@ -5,6 +5,7 @@ export const env = createEnv({
   // サーバサイドの環境変数
   server: {
     /** データベースの接続先のURL */
+    GOOGLE_MAP_API_KEY: z.string().min(1),
   },
   // クライアントサイドの環境変数
   client: {
