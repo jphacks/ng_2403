@@ -35,6 +35,63 @@ export function InputScheduleComponent() {
   const handleSubmit = () => {
     // apiを叩いてjsonを取得する処理
     if (isAddHotel) {
+      const start_dateTimeString = `${timeSets[0].date}T${timeSets[0].startTime}`;
+
+      // その文字列を元にDateオブジェクトを作成
+      const start_dateObject = new Date(start_dateTimeString);
+      const home_departure = start_dateObject.getTime().toString();
+
+      const end_dateTimeString = `${timeSets[0].date}T${timeSets[0].endTime}`;
+
+      // その文字列を元にDateオブジェクトを作成
+      const end_dateObject = new Date(end_dateTimeString);
+      const intern_arrival = end_dateObject.getTime().toString();
+
+      const intership_time = new InternTerm(home_departure, intern_arrival);
+
+      fetch(
+        `/api/map_decide/${home}/${internLocation}/${home_departure}/${intern_arrival}`,
+        {
+          method: "GET",
+          headers: {
+            "Content-Type": "application/json",
+          },
+        }
+      )
+        .then((res) => res.json())
+        .then((data) => {
+          const place_ls = [];
+          for (let i = 0; i < data.length; i++) {
+            const place = new Place(
+              data[i].name,
+              data[i].arrivalTime,
+              data[i].departureTime,
+              "",
+              ""
+            );
+            place_ls.push(place);
+          }
+          const schedule = new Schedule(timeSets[0].date, place_ls);
+          const internship = new Internship(
+            title,
+            intership_time,
+            [schedule],
+            items.map((item) => `${item.name} ${item.num}`)
+          );
+          const data_table = new DataTable(uid, [internship]);
+
+          writeDataTable(data_table)
+            .then((res) => {
+              console.log(res);
+            })
+            .catch((error) => {
+              console.error(error);
+            });
+        })
+        .catch((error) => {
+          console.error(error);
+        });
+    } else {
       const home_departure = new Date(timeSets[0].startTime)
         .getTime()
         .toString();

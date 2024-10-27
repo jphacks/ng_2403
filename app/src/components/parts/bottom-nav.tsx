@@ -1,11 +1,17 @@
+"use client";
+
 import { CalendarCheck, MessageCircleMore, BookA } from "lucide-react"; // shadcnが推奨するアイコンライブラリ
+import { useSearchParams } from "next/navigation"; // クエリパラメータを取得するためのフック
 
 export default function BottomNav() {
+  const searchParams = useSearchParams();
+  const uid = searchParams.get("uid"); // クエリパラメータを取得
+
   return (
     <div className="fixed bottom-0 left-0 w-full bg-white border-t border-gray-200">
       <nav className="flex justify-around py-2">
         <a
-          href="/home/schedule"
+          href={`/home/schedule?uid=${uid}`}
           className="flex flex-col items-center space-y-1 text-gray-500 hover:text-blue-600 w-1/3"
         >
           <CalendarCheck className="w-6 h-6" />
