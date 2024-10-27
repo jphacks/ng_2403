@@ -40,11 +40,13 @@ export async function InternTermList({ uid }: Readonly<{ uid: string }>) {
             <div className="flex py-2 px-8 ">
               <div className="items-center">
                 <p>{internTerm.name}</p>
-                <p>{internTerm.start_date}</p>
+
                 <p className="flex justify-center">≀</p>
                 <p>{internTerm.end_date}</p>
               </div>
-              <div className="flex flex-col justify-center m-auto"></div>
+              <div className="flex flex-col justify-center m-auto">
+                {internTerm.start_date}
+              </div>
             </div>
           </Card>
         </a>
