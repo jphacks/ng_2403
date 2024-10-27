@@ -17,7 +17,9 @@ export function InputScheduleComponent() {
   >([{ date: "", startTime: "", endTime: "" }]);
 
   // 持ち物リストを管理するステート
-  const [items, setItems] = useState<string[]>([""]);
+  const [items, setItems] = useState<{ name: string; num: number }[]>([
+    { name: "", num: 0 },
+  ]);
 
   // フォームの送信イベントハンドラ
   const handleSubmit = () => {
@@ -53,62 +55,80 @@ export function InputScheduleComponent() {
   };
 
   // 持ち物の変更イベントハンドラ
-  const handleItemChange = (index: number, value: string) => {
+  const handleItemChange = (index: number, value: string | number) => {
     const newItems = [...items];
-    newItems[index] = value;
+    if (typeof value === "string") {
+      newItems[index]["name"] = value;
+    }
+    if (typeof value === "number") {
+      newItems[index]["num"] = value;
+    }
     setItems(newItems);
   };
 
   // 新しい持ち物入力欄を追加
   const handleAddItem = () => {
-    setItems([...items, ""]);
+    setItems([...items, { name: "", num: 0 }]);
   };
 
   return (
-    <div className="flex flex-col items-center p-4 space-y-4 bg-gray-50 rounded-lg shadow-md">
+    <div className="flex flex-col items-center p-4 space-y-4 bg-gray-100 rounded-lg shadow-md max-w-3xl m-auto">
       <h1 className="text-xl font-bold">イベント情報入力フォーム</h1>
-
-      <Input
-        type="text"
-        value={title}
-        onChange={(e) => setTitle(e.target.value)}
-        placeholder="タイトルを入力"
-        className="w-full px-4 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500"
-      />
-
-      <Input
-        type="text"
-        value={home}
-        onChange={(e) => setHome(e.target.value)}
-        placeholder="現在地を入力"
-        className="w-full px-4 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500"
-      />
-      <Input
-        type="text"
-        value={internLocation}
-        onChange={(e) => setInternLocation(e.target.value)}
-        placeholder="目的地を入力"
-        className="w-full px-4 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500"
-      />
-      {isAddHotel ? (
+      <div className="w-full max-w-xl">
+        <label className="block text-gray-700">タイトル:</label>
         <Input
           type="text"
-          value={hotel}
-          onChange={(e) => setHotel(e.target.value)}
-          placeholder="宿泊先を入力"
-          className="w-full px-4 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500"
+          value={title}
+          onChange={(e) => setTitle(e.target.value)}
+          placeholder="タイトルを入力"
+          className="w-full px-4 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500 bg-white bg-white"
         />
-      ) : (
-        <button
-          onClick={() => setIsAddHotel(true)}
-          className="mt-2 px-3 py-1 text-white bg-green-500 rounded-lg hover:bg-green-600"
-        >
-          宿泊先を入力する
-        </button>
-      )}
+      </div>
 
-      <div className="w-full">
-        <label className="block text-gray-700">時間セット:</label>
+      <div className="w-full max-w-xl">
+        <label className="block text-gray-700">出発地点:</label>
+        <Input
+          type="text"
+          value={home}
+          onChange={(e) => setHome(e.target.value)}
+          placeholder="現在地を入力"
+          className="w-full px-4 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500 bg-white"
+        />
+      </div>
+
+      <div className="w-full max-w-xl">
+        <label className="block text-gray-700">目的地:</label>
+        <Input
+          type="text"
+          value={internLocation}
+          onChange={(e) => setInternLocation(e.target.value)}
+          placeholder="目的地を入力"
+          className="w-full px-4 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500 bg-white"
+        />
+      </div>
+      <div className="w-full max-w-xl">
+        {isAddHotel ? (
+          <>
+            <label className="block text-gray-700">宿泊先:</label>
+            <Input
+              type="text"
+              value={hotel}
+              onChange={(e) => setHotel(e.target.value)}
+              placeholder="宿泊先を入力"
+              className="w-full px-4 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500 bg-white"
+            />
+          </>
+        ) : (
+          <button
+            onClick={() => setIsAddHotel(true)}
+            className="mt-2 px-3 py-1 text-white bg-green-500 rounded-lg hover:bg-green-600"
+          >
+            宿泊先を入力する
+          </button>
+        )}
+      </div>
+      <div className="w-full max-w-xl">
+        <label className="block text-gray-700">インターン日程:</label>
         {timeSets.map((timeSet, index) => (
           <div key={index} className="flex space-x-2 mt-2">
             <Input
@@ -117,7 +137,7 @@ export function InputScheduleComponent() {
               onChange={(e) =>
                 handleTimeSetChange(index, "date", e.target.value)
               }
-              className="w-1/3 px-4 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500"
+              className="w-1/3 px-4 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500 bg-white"
             />
             <Input
               type="time"
@@ -125,7 +145,7 @@ export function InputScheduleComponent() {
               onChange={(e) =>
                 handleTimeSetChange(index, "startTime", e.target.value)
               }
-              className="w-1/3 px-4 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500"
+              className="w-1/3 px-4 py-2 border border-gray-300 bg-white rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500"
             />
             <Input
               type="time"
@@ -133,7 +153,7 @@ export function InputScheduleComponent() {
               onChange={(e) =>
                 handleTimeSetChange(index, "endTime", e.target.value)
               }
-              className="w-1/3 px-4 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500"
+              className="w-1/3 px-4 py-2 border border-gray-300 bg-white rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500"
             />
           </div>
         ))}
@@ -141,21 +161,29 @@ export function InputScheduleComponent() {
           onClick={handleAddTimeSet}
           className="mt-2 px-3 py-1 text-white bg-green-500 rounded-lg hover:bg-green-600"
         >
-          時間セットを追加
+          日程を追加
         </button>
       </div>
 
-      <div className="w-full">
+      <div className="w-full max-w-xl">
         <label className="block text-gray-700">持ち物:</label>
         {items.map((item, index) => (
-          <Input
-            key={index}
-            type="text"
-            value={item}
-            onChange={(e) => handleItemChange(index, e.target.value)}
-            placeholder={`持ち物 ${index + 1}`}
-            className="w-full mt-2 px-4 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500"
-          />
+          <div key={index} className="flex space-x-2 mt-2">
+            <Input
+              type="text"
+              value={item.name}
+              onChange={(e) => handleItemChange(index, e.target.value)}
+              placeholder={`持ち物 ${index + 1}`}
+              className="w-full mt-2 px-4 py-2 border bg-white border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500"
+            />
+            <Input
+              type="number"
+              value={item.num}
+              onChange={(e) => handleItemChange(index, Number(e.target.value))}
+              placeholder={`数量 ${index + 1}`}
+              className="w-full mt-2 px-4 py-2 border bg-white border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500"
+            />
+          </div>
         ))}
         <button
           onClick={handleAddItem}
