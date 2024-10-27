@@ -1,0 +1,46 @@
+{
+   "chats": [
+     {
+       "id": 1,
+       "name": "jpHacks銀行プログラマインターン",
+       "messages": [
+         {
+           "content": "こんにちは〜",
+           "user_id": 101
+         },
+         {
+           "content": "こんにちは！私服って、スーツでいいんですかね？",
+           "user_id": 102
+         }
+       ]
+     },
+     {
+       "id": 2,
+       "name": "jpHacksコンサルタント総合職インターン",
+       "messages": [
+         {
+           "content": "みなさんどの職種に希望出しますか、、？",
+           "user_id": 103
+         },
+         {
+           "content": "わかっていないのでこれから調べる予定です！",
+           "user_id": 101
+         }
+       ]
+     },
+     {
+      "id": 3,
+      "name": "jpHacksコンサルタントプログラマインターン",
+      "messages": [
+        {
+          "content": "みなさんどの言語書くんですか〜？",
+          "user_id": 103
+        },
+        {
+          "content": "私はPythonです〜",
+          "user_id": 101
+        }
+      ]
+    }
+   ]
+ }
