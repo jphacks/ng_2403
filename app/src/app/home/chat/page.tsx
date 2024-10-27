@@ -79,20 +79,27 @@ export default function Chat() {
 
   return (
     <div className="flex">
-      <div className="flex flex-col w-1/3 p-4 border-r">
+      <div className="flex flex-col w-1/3 p-4 border-r bg-white">
+        {" "}
+        {/* 左側の検索エリアの背景を白に設定 */}
         {/* 検索フォーム */}
-        <div className="flex flex-col space-y-2">
+        <div className="flex flex-col space-y-2 bg-white">
+          {" "}
+          {/* 検索フォームの背景を白に設定 */}
           <Input
             type="text"
             placeholder="チャットをインターン名で検索"
             value={searchTerm}
             onChange={(e) => setSearchTerm(e.target.value)}
+            className="bg-white" // テキストボックスの背景を白に設定
           />
           <Button type="submit" onClick={handleSubmitted}>
             検索
           </Button>
         </div>
-        <div className="mt-4">
+        <div className="mt-4 bg-white">
+          {" "}
+          {/* 検索結果表示欄の背景を白に設定 */}
           <ul>
             {searchResults.length > 0 ? (
               searchResults.map((chat) => (
@@ -114,9 +121,9 @@ export default function Chat() {
       {/* チャット内容を表示するエリア */}
       <div className="flex-1 p-4">
         <h2 className="text-2xl">チャット内容</h2>
-        <div className="border border-gray-300 rounded-lg p-4 mt-4">
+        <div className="border border-gray-300 bg-white rounded-lg p-4 mt-4">
           {" "}
-          {/* 枠線とパディングを追加 */}
+          {/* 背景色を白に設定 */}
           {/* 選択されたチャットの内容を表示 */}
           {selectedChat ? (
             <div>
@@ -142,6 +149,7 @@ export default function Chat() {
               placeholder="メッセージを入力..."
               value={newMessage}
               onChange={(e) => setNewMessage(e.target.value)}
+              className="bg-white" // メッセージ入力ボックスの背景を白に設定
             />
             <Button onClick={handleSendMessage} className="mt-2">
               送信
