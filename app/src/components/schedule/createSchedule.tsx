@@ -21,19 +21,21 @@ export function InputScheduleComponent() {
 
   // フォームの送信イベントハンドラ
   const handleSubmit = () => {
-    alert(
-      `タイトル: ${title}\n` +
-        `場所: ${location}\n` +
-        `時間セット: ${timeSets
-          .map(
-            (set, index) =>
-              `\n  セット${index + 1} - 日付: ${set.date}, 開始: ${
-                set.startTime
-              }, 終了: ${set.endTime}`
-          )
-          .join("")}\n` +
-        `持ち物: ${items.join(", ")}`
-    );
+    // alert(
+    //   `タイトル: ${title}\n` +
+    //     `場所: ${location}\n` +
+    //     `時間セット: ${timeSets
+    //       .map(
+    //         (set, index) =>
+    //           `\n  セット${index + 1} - 日付: ${set.date}, 開始: ${
+    //             set.startTime
+    //           }, 終了: ${set.endTime}`
+    //       )
+    //       .join("")}\n` +
+    //     `持ち物: ${items.join(", ")}`
+    // );
+    const 
+
   };
 
   // 時間セットの変更イベントハンドラ
