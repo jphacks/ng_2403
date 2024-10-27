@@ -3,6 +3,12 @@
 import { useState } from "react";
 import { Input } from "../ui/input";
 import Internship from "@/lib/class/Internship";
+import Schedule from "@/lib/class/Schedule";
+import Place from "@/lib/class/Place";
+import InternTerm from "@/lib/class/InternTerm";
+import DataTable from "@/lib/class/DataTable";
+import { useSearchParams } from "next/navigation";
+import writeDataTable from "@/lib/function/dao/writeDataTable";
 
 export function InputScheduleComponent() {
   // 各入力フィールドの状態を管理するためのステート
@@ -11,6 +17,9 @@ export function InputScheduleComponent() {
   const [internLocation, setInternLocation] = useState<string>("");
   const [isAddHotel, setIsAddHotel] = useState<boolean>(false);
   const [hotel, setHotel] = useState<string>("");
+
+  const searchParams = useSearchParams();
+  const uid = searchParams.get("uid"); // クエリパラメータを取得
 
   // 複数の時間セットを管理するステート
   const [timeSets, setTimeSets] = useState<
@@ -26,8 +35,15 @@ export function InputScheduleComponent() {
   const handleSubmit = () => {
     // apiを叩いてjsonを取得する処理
     if (isAddHotel) {
+      const home_departure = new Date(timeSets[0].startTime)
+        .getTime()
+        .toString();
+      const intern_arrival = new Date(timeSets[0].endTime).getTime().toString();
+
+      const intership_time = new InternTerm(home_departure, intern_arrival);
+
       fetch(
-        `/api/internship/${home}/${internLocation}/${timeSets.startTime}/${timeSets.endTime}`,
+        `/api/map_decide/${home}/${internLocation}/${home_departure}/${intern_arrival}`,
         {
           method: "GET",
           headers: {
@@ -37,7 +53,33 @@ export function InputScheduleComponent() {
       )
         .then((res) => res.json())
         .then((data) => {
-          console.log(data);
+          const place_ls = [];
+          for (let i = 0; i < data.length; i++) {
+            const place = new Place(
+              data[i].name,
+              data[i].arrivalTime,
+              data[i].departureTime,
+              "",
+              ""
+            );
+            place_ls.push(place);
+          }
+          const schedule = new Schedule(timeSets[0].date, place_ls);
+          const internship = new Internship(
+            title,
+            intership_time,
+            [schedule],
+            items.map((item) => `${item.name} ${item.num}`)
+          );
+          const data_table = new DataTable(uid, [internship]);
+
+          writeDataTable(data_table)
+            .then((res) => {
+              console.log(res);
+            })
+            .catch((error) => {
+              console.error(error);
+            });
         })
         .catch((error) => {
           console.error(error);
