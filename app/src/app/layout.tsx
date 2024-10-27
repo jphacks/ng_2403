@@ -14,7 +14,7 @@ export default function RootLayout({
   return (
     <html lang="en">
       <body>
-        <div className="p-10">{children}</div>
+        <div className="p-10 bg-cream min-h-screen">{children}</div>
       </body>
     </html>
   );

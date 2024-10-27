@@ -1,7 +1,7 @@
 import React from "react";
 
 interface UserInfo {
-  id: string | null;
+  id: string | null | undefined;
   UserInfoSet: React.Dispatch<React.SetStateAction<UserInfo | null>>;
 }
 

@@ -66,21 +66,20 @@ body {
     --chart-4: 280 65% 60%;
     --chart-5: 340 75% 55%;
   }
-  .darkgreen
-  {
-    color: rgb(76, 75, 22)
+  .darkgreen {
+    color: rgb(76, 75, 22);
   }
-  .leafgreen
-  {
-    color: rgb(137, 129, 33)
+  .leafgreen {
+    color: rgb(137, 129, 33);
   }
-  .cream
-  {
-    color: rgb(230, 199, 103)
+  .cream {
+    color: rgb(230, 199, 103);
   }
-  .coralred
-  {
-    color: rgb(248, 122, 83)
+  .bg-cream {
+    background-color: rgb(230, 199, 103);
+  }
+  .coralred {
+    color: rgb(248, 122, 83);
   }
 }
 
