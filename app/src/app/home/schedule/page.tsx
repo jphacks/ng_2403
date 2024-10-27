@@ -1,6 +1,12 @@
+"use client"; // クライアントコンポーネントとしてマークする
+
+import { useSearchParams } from "next/navigation";
+
 import { InternTermList } from "@/components/schedule/internList";
 import { CirclePlus } from "lucide-react";
 export default function Schedule() {
+  const searchParams = useSearchParams();
+  const uid = searchParams.get("uid"); // クエリパラメータを取得
   return (
     <div>
       <header className=" p-4">
@@ -10,7 +16,10 @@ export default function Schedule() {
         </div>
       </header>
       <InternTermList />
-      <a href="./schedule/create" className="fixed bottom-16 right-4">
+      <a
+        href={`./schedule/create?id=${uid}`}
+        className="fixed bottom-16 right-4"
+      >
         <CirclePlus className="size-12 text-blue-400" />
       </a>
     </div>
