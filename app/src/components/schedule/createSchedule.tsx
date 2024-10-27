@@ -24,8 +24,10 @@ export function InputScheduleComponent() {
   const handleSubmit = () => {
     // apiを叩いてjsonを取得する処理
     if (isAddHotel) {
+      const home_departure = "1729990572";
+      const intern_arrival = "1729990572";
       fetch(
-        `/api/internship/${home}/${internLocation}/${timeSets.startTime}/${timeSets.endTime}`,
+        `/api/map_decide/${home}/${internLocation}/${home_departure}/${intern_arrival}`,
         {
           method: "GET",
           headers: {
@@ -35,6 +37,7 @@ export function InputScheduleComponent() {
       )
         .then((res) => res.json())
         .then((data) => {
+          
           console.log(data);
         })
         .catch((error) => {
