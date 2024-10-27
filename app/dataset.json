@@ -1,0 +1,162 @@
+{
+  "users": [
+    {
+      "user_id": "1",
+      "internships": [
+        {
+          "title": "Internship 1",
+          "intern_term": [
+            {
+              "start": "2019-01-01",
+              "end": "2019-01-02"
+            }
+          ],
+          "schedules": [
+            {
+              "date": "2019-01-01",
+              "places": {
+                "name": "Place 1",
+                "arrival_time": "2019-01-01 08:00",
+                "departure_time": "2019-01-01 17:00",
+                "traportation_to_here": "Train",
+                "attribute": "Hotel"
+              }
+            },
+            {
+              "date": "2019-01-02",
+              "places": {
+                "name": "Place 2",
+                "arrival_time": "2019-01-02 08:00",
+                "departure_time": "2019-01-02 17:00",
+                "traportation_to_here": "Train",
+                "attribute": "Hotel"
+              }
+            }
+          ],
+          "laggages": ["Laggages 1", "Laggages 2"]
+        },
+        {
+          "title": "Internship 2",
+          "intern_term": [
+            {
+              "start": "2019-01-03",
+              "end": "2019-01-04"
+            }
+          ],
+          "schedules": [
+            {
+              "date": "2019-01-03",
+              "places": {
+                "name": "Place 3",
+                "arrival_time": "2019-01-03 08:00",
+                "departure_time": "2019-01-03 17:00",
+                "traportation_to_here": "Train",
+                "attribute": "Hotel"
+              }
+            },
+            {
+              "date": "2019-01-04",
+              "places": {
+                "name": "Place 4",
+                "arrival_time": "2019-01-04 08:00",
+                "departure_time": "2019-01-04 17:00",
+                "traportation_to_here": "Train",
+                "attribute": "Hotel"
+              }
+            }
+          ],
+          "laggages": ["Laggages 3", "Laggages 4"]
+        }
+      ]
+    },
+    {
+      "user_id": "2",
+      "internships": [
+        {
+          "title": "Internship A",
+          "intern_term": [
+            {
+              "start": "2020-06-10",
+              "end": "2020-06-12"
+            }
+          ],
+          "schedules": [
+            {
+              "date": "2020-06-10",
+              "places": {
+                "name": "Place A",
+                "arrival_time": "2020-06-10 09:00",
+                "departure_time": "2020-06-10 18:00",
+                "traportation_to_here": "Bus",
+                "attribute": "Office"
+              }
+            },
+            {
+              "date": "2020-06-11",
+              "places": {
+                "name": "Place B",
+                "arrival_time": "2020-06-11 09:00",
+                "departure_time": "2020-06-11 18:00",
+                "traportation_to_here": "Bus",
+                "attribute": "Office"
+              }
+            },
+            {
+              "date": "2020-06-12",
+              "places": {
+                "name": "Place C",
+                "arrival_time": "2020-06-12 09:00",
+                "departure_time": "2020-06-12 18:00",
+                "traportation_to_here": "Bus",
+                "attribute": "Office"
+              }
+            }
+          ],
+          "laggages": ["Luggage A", "Luggage B"]
+        },
+        {
+          "title": "Internship B",
+          "intern_term": [
+            {
+              "start": "2020-07-01",
+              "end": "2020-07-03"
+            }
+          ],
+          "schedules": [
+            {
+              "date": "2020-07-01",
+              "places": {
+                "name": "Place D",
+                "arrival_time": "2020-07-01 09:00",
+                "departure_time": "2020-07-01 18:00",
+                "traportation_to_here": "Subway",
+                "attribute": "Office"
+              }
+            },
+            {
+              "date": "2020-07-02",
+              "places": {
+                "name": "Place E",
+                "arrival_time": "2020-07-02 09:00",
+                "departure_time": "2020-07-02 18:00",
+                "traportation_to_here": "Subway",
+                "attribute": "Office"
+              }
+            },
+            {
+              "date": "2020-07-03",
+              "places": {
+                "name": "Place F",
+                "arrival_time": "2020-07-03 09:00",
+                "departure_time": "2020-07-03 18:00",
+                "traportation_to_here": "Subway",
+                "attribute": "Office"
+              }
+            }
+          ],
+          "laggages": ["Luggage C", "Luggage D"]
+        }
+      ]
+    }
+  ]
+}
