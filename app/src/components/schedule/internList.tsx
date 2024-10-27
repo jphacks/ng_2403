@@ -1,26 +1,13 @@
 import { Card } from "@/components/ui/card";
-import readManyInternships from "@/lib/function/dao/readManyInternships";
 
-export async function InternTermList({ uid }: Readonly<{ uid: string }>) {
-  console.log(uid);
-
-  const interships = await readManyInternships(uid);
-
-  console.log(interships);
-
-  const internship_list = [];
-
-  for (const internship of interships?.getInternships() || []) {
-    internship_list.push({
-      name: internship.getTitle(),
-      start_date: internship.getInternTerm().getStart(),
-      end_date: internship.getInternTerm().getEnd(),
-    });
-  }
-
+export function InternTermList() {
+  const internTerms = [
+    { name: "sky", start_date: "2024-10-26", end_date: "2024-10-30" },
+    { name: "sky", start_date: "2024-10-26", end_date: "2024-10-30" },
+  ];
   return (
     <>
-      {internship_list.map((internTerm, index) => (
+      {internTerms.map((internTerm, index) => (
         <a href={`./schedule/${internTerm.name}`} key={index}>
           <Card className="max-w-2xl m-auto">
             <div className="flex py-2 px-8 ">
@@ -30,7 +17,7 @@ export async function InternTermList({ uid }: Readonly<{ uid: string }>) {
                 <p>{internTerm.end_date.split("-")[2]}</p>
               </div>
               <div className="flex flex-col justify-center m-auto">
-                {internship}
+                {internTerm.name}
               </div>
             </div>
           </Card>
