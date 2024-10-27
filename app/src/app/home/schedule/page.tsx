@@ -18,7 +18,7 @@ export default function Schedule() {
       </header>
       <InternTermList uid={uid} />
       <a
-        href={`./schedule/create?id=${uid}`}
+        href={`./schedule/create?uid=${uid}`}
         className="fixed bottom-16 right-4"
       >
         <CirclePlus className="size-12 text-blue-400" />
