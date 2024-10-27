@@ -12,7 +12,7 @@ export default function Schedule() {
   return (
     <div>
       schedule
-      <a href={`/home/schedule/create?id=${uid}`}>create</a>
+      <a href={`/home/schedule/create?uid=${uid}`}>create</a>
     </div>
   );
 }

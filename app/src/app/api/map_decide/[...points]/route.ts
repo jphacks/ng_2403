@@ -28,7 +28,7 @@ export async function GET(
     destination: destination,
     mode: "transit",
     key: API_KEY,
-    departure_time: departureTime,
+    departure_time: "1729998046",
   };
 
   const { data } = await axios.get(GOOGLE_MAPS_API_URL, {
