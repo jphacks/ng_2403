@@ -1,0 +1,130 @@
+クラス
+
+DataTableクラス
+    メンバ変数  
+        user_id: string型
+        internships: Internshipクラスの配列。
+    
+    メソッド
+        getUserIdで、user_idの中身を返す
+        getInternshipsで、internshipsの中身を返す
+
+        setUserIdで、user_idを設定する
+            引数はstring型
+        setInternshipsで、internshipsを設定する
+            引数はInternshipインスタンスの配列
+    
+    コンストラクタが用意されているので、new DataTable(user_id, internships)
+    の形でインスタンス生成を行えば基本は良い。
+
+
+Internshipクラス
+    メンバ変数
+        title: string型
+        intern_term; InternTermクラス
+        schedules: Scheduleクラスの配列
+        laggages: stringクラスの配列 or null
+    
+    メソッド
+        getTitleで、titleの中身を返す
+        getInternTermで、intern_termの中身を返す
+        getSchedulesで、schedulesの中身を返す
+        getLaggagesで、laggagesの中身を返す
+
+        setTitleで、titleを設定する
+            引数はstring型
+        setInternTermで、intern_termを設定する
+            引数はInternTermインスタンス
+        setSchedulesで、schedulesを設定する
+            引数はScheduleインスタンスの配列
+        setLaggagesで、laggagesを設定する
+            引数はstringの配列 or null
+
+    コンストラクタが用意されているので、new Internship(title, intern_term, schedules, laggeages)
+    の形でインスタンス生成を行えば基本は良い。
+
+
+InternTermクラス
+    メンバ変数
+        start: string型
+        end: string型
+
+    メソッド
+        getStartで、startの中身を返す
+        getEndで、endの中身を返す
+    
+        setStartで、startを設定する
+            引数はstring型
+        setEndで、endを設定する
+            引数はstring型
+    
+    コンストラクタが用意されているので、new InternTerm(start, end)
+    の形でインスタンス生成を行えば基本は良い。
+
+
+Scheduleクラス
+    メンバ変数
+        date: string型
+        places: Placesクラスの配列
+    
+    メソッド
+        getDateで、dateの中身を返す
+        getPlacesで、placesの中身を返す
+    
+        setDateで、dateを設定する
+            引数はstring型
+        setPlacesで、placesを設定する
+            引数はplacesインスタンスの配列
+    
+    コンストラクタが用意されているので、new Schedule(date, places)
+    の形でインスタンス生成を行えば基本は良い。
+
+
+Placeクラス
+    メンバ変数
+        name: string型
+        arrival_time: string型
+        departure_time: string型
+        transportation_to_here: string型
+        attribute: string型
+
+    メソッド
+        getNameで、nameの中身を返す
+        getArrivalTimeで、stringの中身を返す
+        getDepartureTimeで、departure_timeの中身を返す
+        getTransportationToHereで、transportation_to_hereの中身を返す
+        getAttributeで、attributeの中身を返す
+
+        setNameで、nameを設定する
+            引数はstring型
+        setArrivalTimeで、arrival_timeを設定する
+            引数はstring型
+        setDepartureTimeで、departure_timeを設定する
+            引数はstring型
+        setTransportationToHereで、transportation_to_hereを設定する
+            引数はstring型
+        setAttributeで、attributeを設定する
+            引数はstring型
+
+    コンストラクタが用意されているので、new Place(name, arrival_time, departure_time, transportation_to_here, attribute)
+    の形でインスタンス生成を行えば基本は良い。
+
+
+関数
+
+writeDataTable関数
+    引数: DataTableインスタンス
+    機能: 与えられた引数のインスタンスをデータベースに登録
+    返り値: void
+
+
+readManyInternships関数
+    引数: user_id: string型
+    機能: 与えられたユーザidから、ユーザのインターンシップ情報をデータベースから全て取得する関数
+    返り値: Promise<DataTable | null>
+
+readInternship関数
+    引数: user_id, title(インターンシップのタイトルを表す)
+    機能: 与えられたユーザidとインターンシップのタイトルから、
+    ユーザのインターンシップ情報を一つだけデータベースから取得する関数
+    返り値: Promise<DataTable | null>
