@@ -22,6 +22,7 @@ export default function Schedule() {
       >
         <CirclePlus className="size-12 text-blue-400" />
       </a>
+
     </div>
   );
 }
