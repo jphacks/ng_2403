@@ -7,6 +7,7 @@ import { CirclePlus } from "lucide-react";
 export default function Schedule() {
   const searchParams = useSearchParams();
   const uid = searchParams.get("uid"); // クエリパラメータを取得
+  console.log(uid);
   return (
     <div>
       <header className=" p-4">
@@ -15,14 +16,13 @@ export default function Schedule() {
           <div className="border-t border-gray-300 mt-2"></div>
         </div>
       </header>
-      <InternTermList />
+      <InternTermList uid={uid} />
       <a
         href={`./schedule/create?id=${uid}`}
         className="fixed bottom-16 right-4"
       >
         <CirclePlus className="size-12 text-blue-400" />
       </a>
-
     </div>
   );
 }
