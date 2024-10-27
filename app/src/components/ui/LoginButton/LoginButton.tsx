@@ -2,7 +2,6 @@
 import UserInfo from "@/lib/interface/UserInfo";
 
 import React, { useEffect } from "react";
-
 import { GoogleAuthProvider, signInWithPopup } from "firebase/auth";
 import { useAuthState } from "react-firebase-hooks/auth";
 import { initializeApp } from "firebase/app";
@@ -46,7 +45,7 @@ const LoginButton: React.FC<UserInfo> = (UserInfo) => {
   useEffect(() => {
     if (user) {
       // ログイン成功後にダッシュボードに遷移
-      router.push("/home/schedule");
+      router.push(`/home/schedule?uid=${user.uid}`);
     }
   }, [user]);
 
