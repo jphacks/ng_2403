@@ -2,6 +2,7 @@
 
 import { useState } from "react";
 import { Input } from "../ui/input";
+import Internship from "@/lib/class/Internship";
 
 export function InputScheduleComponent() {
   // 各入力フィールドの状態を管理するためのステート
@@ -23,19 +24,25 @@ export function InputScheduleComponent() {
 
   // フォームの送信イベントハンドラ
   const handleSubmit = () => {
-    alert(
-      `タイトル: ${title}\n` +
-        `場所: ${location}\n` +
-        `時間セット: ${timeSets
-          .map(
-            (set, index) =>
-              `\n  セット${index + 1} - 日付: ${set.date}, 開始: ${
-                set.startTime
-              }, 終了: ${set.endTime}`
-          )
-          .join("")}\n` +
-        `持ち物: ${items.join(", ")}`
-    );
+    // apiを叩いてjsonを取得する処理
+    if (isAddHotel) {
+      fetch(
+        `/api/internship/${home}/${internLocation}/${timeSets.startTime}/${timeSets.endTime}`,
+        {
+          method: "GET",
+          headers: {
+            "Content-Type": "application/json",
+          },
+        }
+      )
+        .then((res) => res.json())
+        .then((data) => {
+          console.log(data);
+        })
+        .catch((error) => {
+          console.error(error);
+        });
+    }
   };
 
   // 時間セットの変更イベントハンドラ
