@@ -1,13 +1,10 @@
-import { Attribute } from "@/lib/enum/Attribute";
-import { TransportationToHere } from "@/lib/enum/TransportationToHere";
-
 export default class Place {
   // メンバ変数の定義
   private name: string;
   private arrival_time: string;
   private departure_time: string;
-  private transportation_to_here: TransportationToHere;
-  private attribute: Attribute;
+  private transportation_to_here: string;
+  private attribute: string;
 
   // コンストラクタ
   constructor();
@@ -15,22 +12,21 @@ export default class Place {
     name: string,
     arrival_time: string,
     departure_time: string,
-    transportation_to_here: TransportationToHere,
-    attribute: Attribute
+    transportation_to_here: string,
+    attribute: string
   );
   constructor(
     name?: string,
     arrival_time?: string,
     departure_time?: string,
-    transportation_to_here?: TransportationToHere,
-    attribute?: Attribute
+    transportation_to_here?: string,
+    attribute?: string
   ) {
     this.name = name || "";
     this.arrival_time = arrival_time || "";
     this.departure_time = departure_time || "";
-    this.transportation_to_here =
-      transportation_to_here || TransportationToHere.WALK;
-    this.attribute = attribute || Attribute.OTHER;
+    this.transportation_to_here = transportation_to_here || "";
+    this.attribute = attribute || "";
   }
 
   // ゲッター
@@ -43,10 +39,10 @@ export default class Place {
   public getDepartureTime(): string {
     return this.departure_time;
   }
-  public getTransportationToHere(): TransportationToHere {
+  public getTransportationToHere(): string {
     return this.transportation_to_here;
   }
-  public getAttribute(): Attribute {
+  public getAttribute(): string {
     return this.attribute;
   }
 
@@ -60,12 +56,10 @@ export default class Place {
   public setDepartureTime(departure_time: string): void {
     this.departure_time = departure_time;
   }
-  public setTransportationToHere(
-    transportation_to_here: TransportationToHere
-  ): void {
+  public setTransportationToHere(transportation_to_here: string): void {
     this.transportation_to_here = transportation_to_here;
   }
-  public setAttribute(attribute: Attribute): void {
+  public setAttribute(attribute: string): void {
     this.attribute = attribute;
   }
 }
