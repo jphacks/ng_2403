@@ -27,6 +27,7 @@ export async function InternTermList({ uid }: Readonly<{ uid: string }>) {
       end_date: formatDateWithIntl(
         new Date(parseInt(internship.getInternTerm().getEnd(), 10) * 1000)
       ),
+      place: internship.getSchedules()[0].getPlaces(),
     });
   }
 
@@ -43,6 +44,10 @@ export async function InternTermList({ uid }: Readonly<{ uid: string }>) {
 
                 <p className="flex justify-center">≀</p>
                 <p>{internTerm.end_date}</p>
+                <p>経由駅</p>
+                {internTerm.place.map((place, index) => (
+                  <p key={index}>{place.getName()}</p>
+                ))}
               </div>
               <div className="flex flex-col justify-center m-auto">
                 {internTerm.start_date}
