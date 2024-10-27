@@ -4,6 +4,7 @@ import { useSearchParams } from "next/navigation";
 
 import { InternTermList } from "@/components/schedule/internList";
 import { CirclePlus } from "lucide-react";
+import DataTable from "@/lib/class/DataTable";
 export default function Schedule() {
   const searchParams = useSearchParams();
   const uid = searchParams.get("uid"); // クエリパラメータを取得
@@ -22,7 +23,6 @@ export default function Schedule() {
       >
         <CirclePlus className="size-12 text-blue-400" />
       </a>
-
     </div>
   );
 }
