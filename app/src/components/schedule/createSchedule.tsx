@@ -92,10 +92,20 @@ export function InputScheduleComponent() {
           console.error(error);
         });
     } else {
-      const home_departure = new Date(timeSets[0].startTime)
-        .getTime()
-        .toString();
-      const intern_arrival = new Date(timeSets[0].endTime).getTime().toString();
+      const start_dateTimeString = `${timeSets[0].date}T${timeSets[0].startTime}`;
+
+      // その文字列を元にDateオブジェクトを作成
+      const start_dateObject = new Date(start_dateTimeString);
+      const home_departure = start_dateObject.getTime().toString();
+
+      const end_dateTimeString = `${timeSets[0].date}T${timeSets[0].endTime}`;
+
+      // その文字列を元にDateオブジェクトを作成
+      const end_dateObject = new Date(end_dateTimeString);
+      const intern_arrival = end_dateObject.getTime().toString();
+
+      console.log(home_departure);
+      console.log(intern_arrival);
 
       const intership_time = new InternTerm(home_departure, intern_arrival);
 
@@ -110,10 +120,11 @@ export function InputScheduleComponent() {
       )
         .then((res) => res.json())
         .then((data) => {
+          console.log(data);
           const place_ls = [];
           for (let i = 0; i < data.length; i++) {
             const place = new Place(
-              data[i].name,
+              data[i].departureStop,
               data[i].arrivalTime,
               data[i].departureTime,
               "",
