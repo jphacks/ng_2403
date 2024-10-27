@@ -1,6 +1,6 @@
 # カンターン
 
-[![IMAGE ALT TEXT HERE]([https://jphacks.com/wp-content/uploads/2024/07/JPHACKS2024_ogp.jpg)](https://www.youtube.com/watch?v=DZXUkEj-CSI](https://drive.google.com/file/d/1nlCt8WPudkcqbPKFqm7hwrefWOsgYaUF/view?usp=sharing))
+[![IMAGE ALT TEXT HERE]([https://drive.google.com/file/d/1nlCt8WPudkcqbPKFqm7hwrefWOsgYaUF/view?usp=sharing])
 ## 製品概要
 「カンターン」は、インターンシップの予定管理をサポートするWebアプリです。ユーザーはインターンのスケジュールを入力することで、最適な経路の提案を受けられますまた、同じインターン参加者同士でチャットルームを活用し交流が可能。さらに、ESやインターン中のメモを保存し、AIが要約してくれる機能もあり、簡単にインターンの振り返りができます。
 ### 背景(製品開発のきっかけ、課題等）
